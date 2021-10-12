@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import MovieTable from "./components/MovieTable";
 
 function ApiTest() {
   const fetchApi = () => {
@@ -12,13 +13,11 @@ function ApiTest() {
 
   const [data, setData] = useState([]);
 
-  return (
-    <div>
-      <button onClick={fetchApi}>list movies</button>
-      <br />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
-  );
+  useEffect(() => {
+    fetchApi();
+  }, []);
+
+  return <MovieTable data={data} />;
 }
 
 export default ApiTest;
