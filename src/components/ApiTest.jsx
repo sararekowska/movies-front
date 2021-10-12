@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MovieTable from "./components/MovieTable";
+import MovieTable from "./MovieTable";
 
 function ApiTest() {
   const fetchApi = () => {
