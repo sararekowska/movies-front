@@ -1,66 +1,38 @@
-import { useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import { Paper } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { DataGrid } from "@mui/x-data-grid";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-}));
+const columns = [
+  { field: "title", headerName: "Title", width: 200 },
+  { field: "year", headerName: "Year", width: 130 },
+  { field: "director", headerName: "Director", width: 160 },
+  { field: "genre", headerName: "Genre", width: 130, sortable: false },
+];
 
 function MovieTable({ data }) {
-  const [search, setSearch] = useState("");
-
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Name"
-        onChange={(x) => {
-          setSearch(x.target.value);
-        }}
+    <div
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+        height: 400,
+        width: "40%",
+      }}
+    >
+      <DataGrid
+        rows={data.map((movie) => {
+          return {
+            id: movie.id,
+            title: movie.tytul,
+            year: movie.rok,
+            director: movie.rezyser,
+            genre: movie.gatunek,
+          };
+        })}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
       />
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell>Year</StyledTableCell>
-              <StyledTableCell>Director</StyledTableCell>
-              <StyledTableCell>Genre</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data
-              .filter((movie) => {
-                if (search === "") {
-                  return movie;
-                } else if (
-                  movie.tytul.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return movie;
-                }
-              })
-              .map((movie) => {
-                return (
-                  <TableRow>
-                    <TableCell>{movie.tytul}</TableCell>
-                    <TableCell>{movie.rok}</TableCell>
-                    <TableCell>{movie.rezyser}</TableCell>
-                    <TableCell>{movie.gatunek}</TableCell>
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
     </div>
   );
 }
