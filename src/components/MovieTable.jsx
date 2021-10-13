@@ -1,4 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
+import { useMediaQuery } from "./useMediaQuery";
 
 const columns = [
   { headerClassName: "header", field: "rok", headerName: "Year", width: 130 },
@@ -24,6 +25,8 @@ const columns = [
 ];
 
 function MovieTable({ data }) {
+  const isDesktop = useMediaQuery("(min-width: 930px)");
+
   return (
     <div
       style={{
@@ -32,7 +35,7 @@ function MovieTable({ data }) {
         top: "50%",
         transform: "translate(-50%, -50%)",
         height: 400,
-        width: "40%",
+        width: isDesktop ? "40%" : "90%",
       }}
     >
       <DataGrid
