@@ -1,0 +1,12 @@
+body {
+  background-color: rgb(223, 194, 250);
+}
+
+.table {
+  background-color: white;
+  box-shadow: 2px 2px 4px rgb(141, 152, 255);
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  font-weight: bolder !important;
+}

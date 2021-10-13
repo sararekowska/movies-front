@@ -1,10 +1,26 @@
 import { DataGrid } from "@mui/x-data-grid";
 
 const columns = [
-  { field: "title", headerName: "Title", width: 200 },
-  { field: "year", headerName: "Year", width: 130 },
-  { field: "director", headerName: "Director", width: 160 },
-  { field: "genre", headerName: "Genre", width: 130, sortable: false },
+  { headerClassName: "header", field: "rok", headerName: "Year", width: 130 },
+  {
+    headerClassName: "header",
+    field: "tytul",
+    headerName: "Title",
+    width: 280,
+  },
+  {
+    headerClassName: "header",
+    field: "rezyser",
+    headerName: "Director",
+    width: 160,
+  },
+  {
+    headerClassName: "header",
+    field: "gatunek",
+    headerName: "Genre",
+    width: 130,
+    sortable: false,
+  },
 ];
 
 function MovieTable({ data }) {
@@ -20,15 +36,8 @@ function MovieTable({ data }) {
       }}
     >
       <DataGrid
-        rows={data.map((movie) => {
-          return {
-            id: movie.id,
-            title: movie.tytul,
-            year: movie.rok,
-            director: movie.rezyser,
-            genre: movie.gatunek,
-          };
-        })}
+        className="table"
+        rows={data}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
