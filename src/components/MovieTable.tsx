@@ -24,7 +24,7 @@ const columns = [
   },
 ];
 
-function MovieTable({ data }) {
+const MovieTable = ({ data }: any) => {
   const isDesktop = useMediaQuery("(min-width: 930px)");
 
   return (
@@ -47,6 +47,6 @@ function MovieTable({ data }) {
       />
     </div>
   );
-}
+};
 
 export default MovieTable;

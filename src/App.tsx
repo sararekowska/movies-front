@@ -1,4 +1,4 @@
-import ApiTest from "./components/ApiTest.jsx";
+import ApiTest from "./components/ApiTest";
 import "./style/style.css";
 
 function App() {
