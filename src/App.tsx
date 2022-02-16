@@ -1,5 +1,5 @@
 import ApiTest from "./components/ApiTest";
-import "./style/style.css";
+import "./style/style.scss";
 
 function App() {
   return (

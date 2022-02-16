@@ -1,5 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { useMediaQuery } from "./useMediaQuery";
+import { Row } from "../common/types";
 
 const columns = [
   { headerClassName: "header", field: "rok", headerName: "Year", width: 130 },
@@ -24,7 +25,7 @@ const columns = [
   },
 ];
 
-const MovieTable = ({ data }: any) => {
+const MovieTable = ({ data }: { data: Row[] }) => {
   const isDesktop = useMediaQuery("(min-width: 930px)");
 
   return (
